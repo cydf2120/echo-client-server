@@ -29,7 +29,7 @@ void usage() {
 
 struct Param {
 	bool echo{false};
-    bool broadcast{false};
+    	bool broadcast{false};
 	uint16_t port{0};
 
 	bool parse(int argc, char* argv[]) {
@@ -73,12 +73,12 @@ void recvThread(int sd) {
 			client_vec_lock.lock();
 			for (int i: client_vec) {
 				res = send(i, buf, res, 0);
-                if (res == 0 || res == -1)
-                {
-                    fprintf(stderr, "send return %ld", res);
-                    perror(" ");
-                    break;
-                }
+				if (res == 0 || res == -1)
+				{
+				    fprintf(stderr, "send return %ld", res);
+				    perror(" ");
+				    break;
+				}
 			}
 			client_vec_lock.unlock();
 		}
